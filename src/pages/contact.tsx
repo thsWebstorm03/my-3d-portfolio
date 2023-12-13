@@ -1,6 +1,6 @@
-import { CustomLoader } from '@/components/dom/Loader'
-import dynamic from 'next/dynamic'
-import { useState } from 'react'
+import { CustomLoader } from "@/components/dom/Loader";
+import dynamic from "next/dynamic";
+import { useState } from "react";
 // import Shader from '@/components/canvas/Shader/Shader'
 
 // Dynamic import is used to prevent a payload when the website start that will include threejs r3f etc..
@@ -8,30 +8,30 @@ import { useState } from 'react'
 // If something goes wrong go back to a static import to show the error.
 // https://github.com/pmndrs/react-three-next/issues/49
 
-const ObjectClump = dynamic(() => import('@/components/canvas/ObjectClump'), {
-  ssr: false,
-})
+const ObjectClump = dynamic(() => import("@/components/canvas/ObjectClump"), {
+   ssr: false,
+});
 const Page = (props) => {
-  const [unmount, setUnmount] = useState<boolean>(false)
+   const [unmount, setUnmount] = useState<boolean>(false);
 
-  return (
-    <>{!unmount && <CustomLoader setUnmount={setUnmount} text='Contact' />}</>
-  )
-}
+   return (
+      <>{!unmount && <CustomLoader setUnmount={setUnmount} text="Contact" />}</>
+   );
+};
 
 // It will receive same props as Page component (from getStaticProps, etc.)
 Page.r3f = (props) => (
-  <>
-    <ObjectClump />
-  </>
-)
+   <>
+      <ObjectClump />
+   </>
+);
 
-export default Page
+export default Page;
 
 export async function getStaticProps() {
-  return {
-    props: {
-      title: 'Dale Bañares | Contact',
-    },
-  }
+   return {
+      props: {
+         title: "David Zhang | Contact",
+      },
+   };
 }
